@@ -1,5 +1,6 @@
 import axios from "axios";
 import { useState } from "react";
+<<<<<<< HEAD
 import { useNavigate } from "react-router";
 import {  useSearchParams } from "react-router-dom";
 
@@ -65,6 +66,69 @@ function Login(){
                     :''}    
                   <div className="row " style={{textAlign: "right"}}>
                     <div className="col-md-6">
+=======
+import { useNavigate, useSearchParams } from "react-router-dom";
+
+function Login(){
+    const [username,setUsername] = useState('');
+    const[param]=useSearchParams();
+    const [password,setPassword] = useState('');
+    const [msg,setMsg] = useState(param.get('msg'));
+    const navigate = useNavigate();
+    const doLogin=()=>{
+      let token = window.btoa(username + ':' + password)
+      //console.log(token);
+      axios.get('http://localhost:5050/user/login',{
+        headers:{
+          'Authorization':'Basic ' + token
+        }
+      })
+      .then(function(response){
+
+        //handle success
+        localStorage.setItem('username',username)
+        localStorage.setItem('token',token)
+        localStorage.setItem('id',response.data.id)
+        localStorage.setItem('isLoggedIn',true)
+        let role = response.data.role;
+
+        switch (role) {
+          case 'EMPLOYEE':
+            navigate('/employee/dashboard')
+            break;
+          case 'MANAGER':
+            navigate('/manager/dashboard')
+            break;
+         
+          default:
+            break;
+
+        }
+      })
+      .catch(function(error){
+        //handle error
+        setMsg('Invalid Credentials')
+      })
+       
+    }
+    return(
+      <div >
+        <div className="container mt-4" >
+             <div className="row" >
+            <div className="col-md-6"></div>
+            <div className="col-md-6" >
+                <br /><br /><br />
+              <div className="card"  >
+              
+                <div className="card-header" style={{color:"steelblue",textAlign:"center"}}>
+                    <h3>Login</h3>
+                </div>
+                <div className="card-body">
+               
+ 
+                  <div className="row " style={{textAlign: "right"}}>
+                    <div className="col-md-6" style={{color:"darkslategray"}} >
+>>>>>>> origin/master
                       <label>Enter Email/Username:</label>
                     </div>
                     <div className="col-md-6 mb-4">
@@ -83,11 +147,16 @@ function Login(){
                   </div>
                    
                 </div>
+<<<<<<< HEAD
                 <div className="card-footer" style={{textAlign: "right"}}>
+=======
+                <div className="card-footer" style={{textAlign: "center"}}>
+>>>>>>> origin/master
                     <button className="btn btn-primary" 
                     onClick={()=>doLogin()}>Login</button>
                   </div>
               </div>
+<<<<<<< HEAD
               <div style={{textAlign: "left"}} className="mt-4">
                   <span>Don't have an Account 
                     <button className="button_link" 
@@ -102,4 +171,25 @@ function Login(){
     ); 
 }
 
+=======
+              <div style={{textAlign:'left',color:"white"}} className="mt-4" >
+                <span style={{color:"black"}}>Don't have an Account?
+                  <button className="btn btn-link" style={{color:"white"}}
+                  onClick={()=>navigate("/auth/signup")}>Signup</button>
+
+                  
+                </span>
+
+              </div>
+              
+            </div>
+            <div className="col-md-3"></div>
+          </div>
+
+
+        </div>
+        </div>
+    );
+}
+>>>>>>> origin/master
 export default Login;

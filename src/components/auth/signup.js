@@ -3,6 +3,7 @@ import { useState } from "react";
 import { Container, Navbar } from "react-bootstrap";
 import { useNavigate } from "react-router";
 
+<<<<<<< HEAD
 function Signup(){
     const [name,setName] = useState('');
     const [contact,setContact] = useState('');
@@ -39,6 +40,33 @@ function Signup(){
         axios.post('http://localhost:8082/customer/address/add',customerObj)
         .then(response=>{
             setCustomer(response.data)
+=======
+function SignUp(){
+    const [name,setName] = useState('');
+      
+    const [username,setUsername] = useState('');
+    const [password,setPassword] = useState('');
+    const [manager,setManager] = useState('');
+    const [email,setEmail] = useState('');
+    
+
+    const [msg,setMsg] = useState('');
+    const navigate = useNavigate();
+    const doSignUp=()=>{
+        let managerObj = {
+            "name":name,
+            
+            "user":{
+               "username":username,
+               "password":password,
+               "email":email
+            }
+        }
+        //console.log(JSON.stringify(customerObj))
+        axios.post('http://localhost:5050/manager/add',managerObj)
+        .then(response=>{
+            setManager(response.data)
+>>>>>>> origin/master
             navigate('/auth/login?msg="signup success"')
         })
         .catch(function(error){
@@ -47,12 +75,17 @@ function Signup(){
 
     }
     return(
+<<<<<<< HEAD
         <div>
+=======
+        <div className="bg-dark-subtle " >
+>>>>>>> origin/master
             <Navbar bg="dark" data-bs-theme="dark">
         <Container>
           <Navbar.Brand href="#home">MyApp</Navbar.Brand>
         </Container>
       </Navbar>
+<<<<<<< HEAD
       <div className="container mt-4">
         <div className="row">
           <div className="col-md-3"></div>
@@ -60,6 +93,17 @@ function Signup(){
             <div className="card">
               <div className="card-header">
                 <h3>Sign Up</h3>
+=======
+      <br /><br /><br />
+
+      <div className="container mt-4">
+        <div className="row">
+          <div className="col-md-6"></div>
+          <div className="col-md-6">
+            <div className="card">
+              <div className="card-header">
+                <h3 style={{textAlign:"center"}}>Sign Up</h3>
+>>>>>>> origin/master
               </div>
               <div className="card-body">
                 {msg !== "" ? (
@@ -82,6 +126,7 @@ function Signup(){
                       onChange={(e) => setName(e.target.value)}
                     />
                   </div>
+<<<<<<< HEAD
 
                   {/* Read Contact */}
                   <div className="col-md-6">
@@ -156,11 +201,31 @@ function Signup(){
                   <hr />
                   <div className="col-md-6">
                     <label>Enter Email/Username:</label>
+=======
+                  
+
+                  
+                  <div className="col-md-6">
+                    <label>Enter Email:</label>
+>>>>>>> origin/master
                   </div>
                   <div className="col-md-6 mb-4">
                     <input
                       type="email"
                       className="form-control"
+<<<<<<< HEAD
+=======
+                      onChange={(e) => setEmail(e.target.value)}
+                    />
+                  </div>
+                  <div className="col-md-6">
+                    <label>Enter Username:</label>
+                  </div>
+                  <div className="col-md-6 mb-4">
+                    <input
+                      type="username"
+                      className="form-control"
+>>>>>>> origin/master
                       onChange={(e) => setUsername(e.target.value)}
                     />
                   </div>
@@ -178,8 +243,13 @@ function Signup(){
                   </div>
                 </div>
               </div>
+<<<<<<< HEAD
               <div className="card-footer" style={{ textAlign: "right" }}>
                 <button className="btn btn-primary" onClick={() => doSignUp()}>
+=======
+              <div className="card-footer" style={{ textAlign: "center" }}>
+                <button className="btn btn-primary" onClick={() => doSignUp()} >
+>>>>>>> origin/master
                   SignUp
                 </button>
               </div>
@@ -188,7 +258,11 @@ function Signup(){
               <span>
                 Have an Account?
                 <button
+<<<<<<< HEAD
                   className="button_link"
+=======
+                  className="btn btn-link"
+>>>>>>> origin/master
                   onClick={() => navigate("/auth/login")}
                 >
                   Login
@@ -199,8 +273,17 @@ function Signup(){
           <div className="col-md-3"></div>
         </div>
       </div>
+<<<<<<< HEAD
         </div>
 
     );
 }
 export default Signup;
+=======
+      <br /><br /><br /><br /><br />
+      
+        </div>
+    );
+}
+export default SignUp;
+>>>>>>> origin/master

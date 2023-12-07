@@ -37,6 +37,10 @@
   }
 }
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> origin/master
 .error_msg{
   color:red;
   font-size:medium;
@@ -45,7 +49,11 @@
 .button_link {
   border: 0;
   border-radius: 0.25rem;
+<<<<<<< HEAD
   background: #ffffff;
+=======
+  
+>>>>>>> origin/master
   color: white;
   font-family: -system-ui, sans-serif;
   font-size: 1rem;
@@ -53,7 +61,21 @@
   white-space: nowrap;
   text-decoration: none;
   padding: 0.25rem 0.5rem;
+<<<<<<< HEAD
   margin: 0.25rem;
   cursor: pointer;
    color: black;
 }
+=======
+  
+  cursor: pointer;
+  color: black;
+}
+.app-body {
+  background-image: url(https://pixabay.com/illustrations/technology-tech-electronics-7086599/); /* Set your desired background color here */
+  /* Remove default padding to cover the entire viewport */
+}
+.bg_color{
+  background-color: rgb(110, 110, 152);
+}
+>>>>>>> origin/master
