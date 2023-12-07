@@ -1,25 +1,41 @@
-import logo from './logo.svg';
-import './App.css';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+import { Route, Routes } from "react-router";
+import "./App.css";
+
+import CustomerDashboard from "./components/customer/customerdashboard";
+import VendorDashboard from "./components/vendor/dashboard";
+import ExecutiveDashboard from "./components/executive/dashboard";
+import Login from "./components/auth/login";
+import Signup from "./components/auth/signup";
+import Logout from "./components/auth/logout";
+import ArrayDemoComponent from "./class components/arry_demo";
+import InputDemoComponent from "./class components/input_demo";
+import PostComponent from "./class components/posts";
+import CommentsComponent from "./class components/comments";
+import ReduxProduct from "./components/redux/products";
+
+
+function App(){
+ 
+ 
+ 
+  return(
+    
+      <div className="App">
+       <Routes>
+          <Route path="/" element={<ReduxProduct />}></Route>
+          {/* <Route path="/posts/comments/:id" element={<CommentsComponent />}></Route> */}
+          <Route path="/customer/dashboard" element={<CustomerDashboard />}></Route>
+          <Route path="/vendor/dashboard" element={<VendorDashboard />}></Route>
+          <Route path="/executive/dashboard" element={<ExecutiveDashboard />}></Route>
+          <Route path="/auth/login" element={<Login />}></Route>
+          <Route path="/auth/signup" element={<Signup />}></Route>
+          <Route path="/auth/logout" element={<Logout />}></Route>
+        </Routes>
+    
+     </div>
+
+  
   );
 }
-
 export default App;
